@@ -24,6 +24,8 @@ public class MProducto {
     Integer precio;
     @Column(length = 60, nullable = false)
     String descripcion;
+    @Column(length = 255)
+    String imagen;
 
     // Relaciones
     @OneToMany(mappedBy = "mProducto")
@@ -38,6 +40,7 @@ public class MProducto {
         this.color = color;
         this.precio = precio;
         this.descripcion = descripcion;
+        this.imagen = imagen;
     }
 
     public MProducto() {
@@ -99,4 +102,8 @@ public class MProducto {
     public void setmCarritoItems(List<MCarritoItems> mCarritoItems) {
         this.mCarritoItems = mCarritoItems;
     }
+
+    public String getImagen() {return imagen; }
+
+    public void setImagen(String imagen) {this.imagen = imagen;}
 }

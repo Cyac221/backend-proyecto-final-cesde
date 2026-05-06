@@ -13,15 +13,15 @@ public class MUsuario {
     @Id
     @Column(name = "id", length = 15, nullable = false)
     String idCliente;
-    @Column(length = 15, nullable = false)
+    @Column(length = 150, nullable = false)
     String nombreCliente;
-    @Column(length = 20, nullable = false)
+    @Column(length = 200, nullable = false)
     String correoElectronico;
-    @Column(length = 30, nullable = false)
+    @Column(length = 300, nullable = false)
     String password;
-    @Column(length = 30, nullable = false)
+    @Column(length = 300, nullable = true)
     String direccionEnvio;
-    @Column(length = 13, nullable = false)
+    @Column(length = 130, nullable = true)
     String numeroTelefono;
     @Column(nullable = false)
     Boolean activo = true;

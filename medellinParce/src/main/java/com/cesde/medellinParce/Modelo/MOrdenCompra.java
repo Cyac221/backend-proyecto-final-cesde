@@ -11,14 +11,16 @@ import java.time.LocalDate;
 public class MOrdenCompra {
 
     @Id
-    @Column(length = 10, nullable = false)
+    @Column(length = 90, nullable = false)
     String idCompra;
-    @Column(length = 10, nullable = false)
+    @Column(length = 90, nullable = false)
     String numeroOrden;
-    @Column(length = 10, nullable = false)
+    @Column(length = 90, nullable = false)
     String cliente;
-    @Column(length = 10, nullable = false)
+    @Column(length = 200, nullable = false)
     String listaProductos;
+    @Column(nullable = false)
+    Integer total;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(nullable = false)
@@ -31,12 +33,13 @@ public class MOrdenCompra {
     MUsuario mUsuario;
 
     // Constructores
-    public MOrdenCompra(String idCompra, String numeroOrden, String cliente, String listaProductos, LocalDate fecha) {
+    public MOrdenCompra(String idCompra, String numeroOrden, String cliente, String listaProductos, LocalDate fecha, Integer total) {
         this.idCompra = idCompra;
         this.numeroOrden = numeroOrden;
         this.cliente = cliente;
         this.listaProductos = listaProductos;
         this.fecha = fecha;
+        this.total = total;
     }
 
     public MOrdenCompra() {
@@ -90,4 +93,8 @@ public class MOrdenCompra {
     public void setmUsuario(MUsuario mUsuario) {
         this.mUsuario = mUsuario;
     }
+
+    public Integer getTotal() { return total;}
+
+    public void setTotal(Integer total) { this.total = total; }
 }
