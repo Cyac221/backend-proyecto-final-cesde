@@ -17,7 +17,7 @@ public class MOrdenCompra {
     String numeroOrden;
     @Column(length = 90, nullable = false)
     String cliente;
-    @Column(length = 200, nullable = false)
+    @Column(length = 1000, nullable = false)
     String listaProductos;
     @Column(nullable = false)
     Integer total;
@@ -28,7 +28,7 @@ public class MOrdenCompra {
 
     // Relaciones
     @ManyToOne
-    @JoinColumn(name = "pkorden", referencedColumnName = "id")
+    @JoinColumn(name = "pkorden", referencedColumnName = "id", nullable = true)
     @JsonBackReference
     MUsuario mUsuario;
 
