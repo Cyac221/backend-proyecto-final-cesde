@@ -4,9 +4,8 @@ import com.cesde.medellinParce.Modelo.MUsuario;
 import com.cesde.medellinParce.Repositorio.IUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
+import java.util.List;
 
 @Service
 public class SUsuario {
@@ -15,15 +14,6 @@ public class SUsuario {
 
     public SUsuario(IUsuario iUsuario) {
         this.iUsuario = iUsuario;
-    }
-
-    // Adicionar usuario
-    public MUsuario adicionarRegistroUsuario(MUsuario mUsuario) throws Exception {
-        try {
-            return iUsuario.save(mUsuario);
-        } catch (Exception error) {
-            throw new Exception(error.getMessage());
-        }
     }
 
     // Consulta general usuarios
@@ -69,6 +59,8 @@ public class SUsuario {
                 registroNuevo.setPassword(mUsuario.getPassword());
                 registroNuevo.setDireccionEnvio(mUsuario.getDireccionEnvio());
                 registroNuevo.setNumeroTelefono(mUsuario.getNumeroTelefono());
+                registroNuevo.setActivo(mUsuario.getActivo());
+
                 return iUsuario.save(registroNuevo);
             } else
                 throw new Exception("No se puede modificar porque el usuario no está registrado");
@@ -97,6 +89,18 @@ public class SUsuario {
     public List<MUsuario> consultaTodosUsuarios() throws Exception {
         try {
             return iUsuario.findAll();
+        } catch (Exception error) {
+            throw new Exception(error.getMessage());
+        }
+    }
+
+    public MUsuario adicionarRegistroUsuario(MUsuario mUsuario) throws Exception {
+        try {
+            Optional<MUsuario> correoExistente = iUsuario.findByCorreoElectronico(mUsuario.getCorreoElectronico());
+            if (correoExistente.isPresent()) {
+                throw new Exception("El correo electrónico ya está registrado.");
+            }
+            return iUsuario.save(mUsuario);
         } catch (Exception error) {
             throw new Exception(error.getMessage());
         }

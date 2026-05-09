@@ -15,7 +15,7 @@ public class MUsuario {
     String idCliente;
     @Column(length = 150, nullable = false)
     String nombreCliente;
-    @Column(length = 200, nullable = false)
+    @Column(length = 200, nullable = false,unique = true)
     String correoElectronico;
     @Column(length = 300, nullable = false)
     String password;

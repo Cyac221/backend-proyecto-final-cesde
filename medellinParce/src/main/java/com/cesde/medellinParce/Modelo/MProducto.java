@@ -26,6 +26,8 @@ public class MProducto {
     String descripcion;
     @Column(length = 255)
     String imagen;
+    @Column(length = 50,nullable = false)
+    String categoria;
 
     // Relaciones
     @OneToMany(mappedBy = "mProducto")
@@ -106,4 +108,8 @@ public class MProducto {
     public String getImagen() {return imagen; }
 
     public void setImagen(String imagen) {this.imagen = imagen;}
+
+    public String getCategoria() { return categoria;}
+
+    public void setCategoria(String categoria) { this.categoria = categoria;}
 }
