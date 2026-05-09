@@ -26,6 +26,10 @@ public class MOrdenCompra {
     @Column(nullable = false)
     LocalDate fecha;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column (nullable = true)
+    LocalDate fechaEntrega;
+
     // Relaciones
     @ManyToOne
     @JoinColumn(name = "pkorden", referencedColumnName = "id", nullable = true)
@@ -33,13 +37,14 @@ public class MOrdenCompra {
     MUsuario mUsuario;
 
     // Constructores
-    public MOrdenCompra(String idCompra, String numeroOrden, String cliente, String listaProductos, LocalDate fecha, Integer total) {
+    public MOrdenCompra(String idCompra, String numeroOrden, String cliente, String listaProductos, LocalDate fecha, Integer total,LocalDate fechaEntrega) {
         this.idCompra = idCompra;
         this.numeroOrden = numeroOrden;
         this.cliente = cliente;
         this.listaProductos = listaProductos;
         this.fecha = fecha;
         this.total = total;
+        this.fechaEntrega = fechaEntrega;
     }
 
     public MOrdenCompra() {
@@ -97,4 +102,11 @@ public class MOrdenCompra {
     public Integer getTotal() { return total;}
 
     public void setTotal(Integer total) { this.total = total; }
+
+    public LocalDate getFechaEntrega() {
+        return fechaEntrega;
+    }
+    public void setFechaEntrega(LocalDate fechaEntrega){
+        this.fechaEntrega = fechaEntrega;
+    }
 }

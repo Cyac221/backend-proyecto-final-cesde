@@ -25,6 +25,8 @@ public class MUsuario {
     String numeroTelefono;
     @Column(nullable = false)
     Boolean activo = true;
+    @Column(length = 20, nullable = false)
+    String rol = "usuario";
 
     // Relaciones
     @OneToMany(mappedBy = "mUsuario")
@@ -36,13 +38,14 @@ public class MUsuario {
     List<MCarrito> mCarritos;
 
     // Constructores
-    public MUsuario(String idCliente, String nombreCliente, String correoElectronico, String password, String direccionEnvio, String numeroTelefono) {
+    public MUsuario(String idCliente, String nombreCliente, String correoElectronico, String password, String direccionEnvio, String numeroTelefono,String rol) {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.correoElectronico = correoElectronico;
         this.password = password;
         this.direccionEnvio = direccionEnvio;
         this.numeroTelefono = numeroTelefono;
+        this.rol = rol;
     }
 
     public MUsuario() {
@@ -109,4 +112,11 @@ public class MUsuario {
     public void setActivo(Boolean activo) { this.activo = activo; }
     public List<MCarrito> getmCarritos() { return mCarritos; }
     public void setmCarritos(List<MCarrito> mCarritos) { this.mCarritos = mCarritos; }
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 }
