@@ -93,4 +93,12 @@ public class SUsuario {
             throw new Exception(error.getMessage());
         }
     }
+
+    public List<MUsuario> consultaTodosUsuarios() throws Exception {
+        try {
+            return iUsuario.findAll();
+        } catch (Exception error) {
+            throw new Exception(error.getMessage());
+        }
+    }
 }

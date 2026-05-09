@@ -97,4 +97,17 @@ public class CUsuario {
                     .body(error.getMessage());
         }
     }
+
+    @GetMapping("/todos")
+    public ResponseEntity<?> consultaTodosUsuarios() throws Exception {
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(this.sUsuario.consultaTodosUsuarios());
+        } catch (Exception error) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(error.getMessage());
+        }
+    }
 }
